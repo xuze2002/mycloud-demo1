@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yiven.user.mapper.UserMapper"> <!-- Change the package path accordingly -->
+
+    <!-- Define getUserRoles query -->
+    <select id="getUserRoles" resultType="java.lang.String" parameterType="java.lang.Integer">
+        SELECT r.roleName
+        FROM user u
+                 JOIN rs ON u.id = rs.uid
+                 JOIN role r ON rs.rid = r.id
+        WHERE u.id = #{userId}
+    </select>
+
+</mapper>
